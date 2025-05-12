@@ -651,6 +651,7 @@ def train(args):
             def save_func():
                 ckpt_name = train_util.EPOCH_FILE_NAME.format(model_name, epoch + 1) + "." + args.save_model_as
                 ckpt_file = os.path.join(args.output_dir, ckpt_name)
+                metadata["ss_steps"] = str(global_step)
                 metadata["ss_training_finished_at"] = str(time.time())
                 print(f"saving checkpoint: {ckpt_file}")
                 unwrap_model(network).save_weights(ckpt_file, save_dtype, minimum_metadata if args.no_metadata else metadata)
@@ -674,7 +675,6 @@ def train(args):
         # end of epoch
 
     metadata["ss_epoch"] = str(num_train_epochs)
-    metadata["ss_steps"] = str(global_step)
     metadata["ss_training_finished_at"] = str(time.time())
 
     if is_main_process:
