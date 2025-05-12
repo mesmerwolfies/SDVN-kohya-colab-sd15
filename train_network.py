@@ -520,7 +520,7 @@ def train(args):
             # metadata["ss_vae_hash"] = train_util.model_hash(vae_name)
             # metadata["ss_new_vae_hash"] = train_util.calculate_sha256(vae_name)
             vae_name = os.path.basename(vae_name)
-        metadata["ss_vae_name"] = vae_name
+        # metadata["ss_vae_name"] = vae_name
 
     metadata = {k: str(v) for k, v in metadata.items()}
 
