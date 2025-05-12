@@ -361,7 +361,7 @@ def train(args):
         "ss_cache_latents": bool(args.cache_latents),
         "ss_seed": args.seed,
         "ss_lowram": args.lowram,
-        "ss_noise_offset": args.noise_offset,
+        "ss_noise_offset": None if args.noise_offset == 0 else args.noise_offset,
         "ss_training_comment": args.training_comment,  # will not be updated after training
         "ss_sd_scripts_commit_hash": train_util.get_git_revision_hash(),
         "ss_optimizer": optimizer_name + (f"({optimizer_args})" if len(optimizer_args) > 0 else ""),
@@ -372,10 +372,10 @@ def train(args):
         "ss_face_crop_aug_range": args.face_crop_aug_range,
         "ss_prior_loss_weight": args.prior_loss_weight,
         "ss_min_snr_gamma": args.min_snr_gamma,
-        "ss_multires_noise_discount": args.multires_noise_discount,
-        "ss_multires_noise_iterations": args.multires_noise_iterations,
-        "ss_ip_noise_gamma": args.ip_noise_gamma,
-        "ss_network_dropout": args.network_dropout
+        "ss_multires_noise_discount": None if args.multires_noise_discount == 0 else args.multires_noise_discount,
+        "ss_multires_noise_iterations": None if args.multires_noise_iterations == 0 else args.multires_noise_iterations,
+        "ss_ip_noise_gamma": getattr(args, "ip_noise_gamma", None),
+        "ss_network_dropout": getattr(args, "network_dropout", None),
     }
 
     if use_user_config:
