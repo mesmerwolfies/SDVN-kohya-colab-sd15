@@ -1,0 +1,64 @@
+{
+    "model_arguments": {
+        "v2": false,
+        "v_parameterization": false,
+        "pretrained_model_name_or_path": "/content/model/model.safetensors",
+        "vae": "/content/vae/model.safetensors"
+    },
+    "optimizer_arguments": {
+        "min_snr_gamma": null,
+        "optimizer_type": "AdamW8bit",
+        "learning_rate": 0.0001,
+        "max_grad_norm": 1.0,
+        "stop_train_text_encoder": null,
+        "optimizer_args": null,
+        "lr_scheduler": "constant",
+        "lr_warmup_steps": null,
+        "lr_scheduler_num_cycles": null,
+        "lr_scheduler_power": null
+    },
+    "dataset_arguments": {
+        "cache_latents": true,
+        "debug_dataset": false,
+        "vae_batch_size": 1
+    },
+    "training_arguments": {
+        "output_dir": "/contetnt/output",
+        "output_name": "checkpoint_name",
+        "save_precision": "fp16",
+        "save_every_n_epochs": 1,
+        "save_n_epoch_ratio": null,
+        "save_last_n_epochs": null,
+        "save_state": false,
+        "save_last_n_epochs_state": null,
+        "resume": "",
+        "train_batch_size": 1,
+        "max_token_length": 225,
+        "mem_eff_attn": false,
+        "xformers": true,
+        "max_train_epochs": null,
+        "max_train_steps": null,
+        "max_data_loader_n_workers": 8,
+        "persistent_data_loader_workers": true,
+        "seed": null,
+        "gradient_checkpointing": false,
+        "gradient_accumulation_steps": 1,
+        "mixed_precision": "fp16",
+        "clip_skip": 2,
+        "logging_dir": "/content/Dreamboot-Config/logs",
+        "log_prefix": "project_name",
+        "noise_offset": null,
+        "training_comment": "sdvn"
+    },
+    "sample_prompt_arguments": {
+        "sample_every_n_steps": 200,
+        "sample_every_n_epochs": null,
+        "sample_sampler": "euler"
+    },
+    "dreambooth_arguments": {
+        "prior_loss_weight": 1
+    },
+    "saving_arguments": {
+        "save_model_as": "safetensors"
+    }
+}
